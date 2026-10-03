@@ -1,0 +1,1186 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0",
+          "cachedResultName": "Images/videos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Generator",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Prompt": "={{ $json.Prompt }}",
+            "row_number": 0,
+            "Status": "working"
+          },
+          "matchingColumns": [
+            "Prompt"
+          ],
+          "schema": [
+            {
+              "id": "Prompt",
+              "displayName": "Prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Generate",
+              "displayName": "Generate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Topic",
+              "displayName": "Topic",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "43451e60-7473-4d5a-9757-f49eb8a7b060",
+      "name": "Set Status Working",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1568,
+        448
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mMDAlVFkw7EbTZeE",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "empty-prompt",
+              "leftValue": "={{ $json.Prompt }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "95cf8f9c-b9b7-4636-942f-d93930b3aa00",
+      "name": "Prompt Empty?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -400,
+        384
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0",
+          "cachedResultName": "Images/videos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Generator",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Prompt": "={{ $('Set Status Working').item.json.Prompt }}",
+            "Status": "error: empty prompt"
+          },
+          "matchingColumns": [
+            "Prompt"
+          ],
+          "schema": [
+            {
+              "id": "Prompt",
+              "displayName": "Prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Generate",
+              "displayName": "Generate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "9ef475b9-af5a-4f47-bb2c-d3e4af9528ae",
+      "name": "Set Status Error",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -144,
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mMDAlVFkw7EbTZeE",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const src = $('Set Status Working').item.json;\nconst prompt = (src.Prompt === undefined || src.Prompt === null) ? '' : src.Prompt.toString();\nconst topic = (src.Topic === undefined || src.Topic === null) ? '' : src.Topic.toString();\nconst generate = (src.Generate === undefined || src.Generate === null) ? '' : src.Generate.toString();\nconst genType = generate.trim().toLowerCase() === 'image' ? 'image' : 'video';\n// Extract @references; the char before @ must not be a word char, @ or dot so\n// email addresses (e.g. name@domain) and @@ are not treated as references.\nconst re = /(^|[^A-Za-z0-9_@.])@([A-Za-z0-9_]+)/g;\nconst refs = [];\nconst seen = {};\nlet m;\nwhile ((m = re.exec(prompt)) !== null) {\n  const token = m[2];\n  const key = token.toLowerCase();\n  if (!seen[key]) { seen[key] = true; refs.push(token); }\n}\nreturn { json: { original_prompt: prompt, topic: topic, generation_type: genType, references: refs } };"
+      },
+      "id": "a0560e11-2818-4954-bbb8-dbd65411158f",
+      "name": "Detect @References",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0",
+          "cachedResultName": "Images/videos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Character"
+        },
+        "options": {}
+      },
+      "id": "e000ddbb-9bbc-42de-bcc1-0f5ea9196ab7",
+      "name": "Get Character Data",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        224,
+        0
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mMDAlVFkw7EbTZeE",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0",
+          "cachedResultName": "Images/videos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Scene"
+        },
+        "options": {}
+      },
+      "id": "931f70ca-ce27-413b-a941-dfe84d99b4ce",
+      "name": "Get Scene Data",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        448,
+        160
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mMDAlVFkw7EbTZeE",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const detItems = $('Detect @References').all();\nconst charRows = $('Get Character Data').all().map(i => i.json);\nconst sceneRows = $('Get Scene Data').all().map(i => i.json);\nconst norm = (v) => (v === undefined || v === null) ? '' : v.toString().trim().toLowerCase();\nconst out = [];\nfor (let idx = 0; idx < detItems.length; idx++) {\n  const det = detItems[idx].json;\n  const refs = det.references || [];\n  const topic = det.topic || '';\n  const characters = [];\n  const scenes = [];\n  const unresolved = [];\n  for (const ref of refs) {\n    const r = norm(ref);\n    const c = charRows.find(row => norm(row['Character ID']) === r || norm(row['Naam / rol']) === r);\n    if (c) {\n      characters.push({\n        character_id: c['Character ID'] || '',\n        name: c['Naam / rol'] || '',\n        fixed_description: c['Vaste beschrijving (in elke prompt)'] || '',\n        character_sheet_prompt: c['Character sheet prompt (front/profiel/achterkant + face close-up)'] || '',\n        notes: c['Notities'] || '',\n        reference: '@' + ref,\n      });\n      continue;\n    }\n    const s = sceneRows.find(row => norm(row['Scene ID']) === r || norm(row['Locatienaam']) === r);\n    if (s) {\n      scenes.push({\n        scene_id: s['Scene ID'] || '',\n        location_name: s['Locatienaam'] || '',\n        fixed_description: s['Vaste beschrijving (in elke prompt)'] || '',\n        reference_prompt: s['Reference / establishing prompt'] || '',\n        notes: s['Notities'] || '',\n        reference: '@' + ref,\n        selected_by: 'explicit',\n      });\n      continue;\n    }\n    unresolved.push({ reference: '@' + ref, status: 'not_found' });\n  }\n  // Topic-based scene selection ONLY when no explicit scene was referenced\n  // and the Scene sheet actually has a Topic column (forward-compatible).\n  if (scenes.length === 0 && topic.trim() !== '' && sceneRows.length > 0) {\n    const topicKey = Object.keys(sceneRows[0]).find(k => k.toLowerCase() === 'topic');\n    if (topicKey) {\n      const t = norm(topic);\n      for (const s of sceneRows) {\n        if (norm(s[topicKey]) === t) {\n          scenes.push({\n            scene_id: s['Scene ID'] || '',\n            location_name: s['Locatienaam'] || '',\n            fixed_description: s['Vaste beschrijving (in elke prompt)'] || '',\n            reference_prompt: s['Reference / establishing prompt'] || '',\n            notes: s['Notities'] || '',\n            reference: 'topic:' + topic,\n            selected_by: 'topic',\n          });\n        }\n      }\n    }\n  }\n  const context = {\n    original_prompt: det.original_prompt || '',\n    topic: topic,\n    generation_type: det.generation_type || 'image',\n    characters: characters,\n    scenes: scenes,\n    unresolved_references: unresolved,\n  };\n  out.push({ json: { context: context, context_json: JSON.stringify(context, null, 2) }, pairedItem: idx });\n}\nreturn out;"
+      },
+      "id": "cd893e23-7907-43dc-8d50-5e70cdb0c281",
+      "name": "Build Context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-opus-5",
+          "cachedResultName": "claude-opus-5"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Build the final production-ready generation prompt from the CONTEXT below. Return VALID JSON ONLY.\n\nCONTEXT:\n{{ $json.context_json }}"
+            }
+          ]
+        },
+        "options": {
+          "includeMergedResponse": true,
+          "system": "You are a prompt engineer for text-to-image and text-to-video generation models.\nYou receive a JSON CONTEXT object containing: original_prompt, topic, generation_type, characters[], scenes[], unresolved_references[].\n\nAUTHORITATIVE DATA RULES:\n- The character and scene descriptions in CONTEXT come from a database and are AUTHORITATIVE. Never invent, alter or contradict them.\n- Preserve character fixed identity: face, hair, age, body, and clothing when specified in fixed_description.\n- Preserve scene fixed identity: location, architecture, environment, geographic/cultural traits, fixed visual elements.\n- NEVER invent character identity/appearance/IDs or scene identity/appearance/IDs. Only use what CONTEXT provides.\n- If unresolved_references is non-empty, do NOT fabricate those entities. Work with what exists and note that no predefined data was found for them.\n- If no scene exists at all, do not invent one.\n\nPRIORITY (highest first): 1) explicit user instruction in original_prompt (action, camera, emotion, composition, story moment, interaction, requested lighting); 2) fixed character info; 3) fixed scene info; 4) topic/context; 5) general cinematic enhancement.\nThe topic influences interpretation and style but must NEVER overwrite explicit user instructions.\nReplace @references in the user prompt with the actual retrieved descriptions in the final prompt.\n\nOUTPUT: Return ONLY a single valid JSON object, no markdown, no code fences, no commentary, with this shape:\n{\n  \"generation_type\": \"image\" | \"video\",\n  \"topic\": string,\n  \"original_prompt\": string,\n  \"characters\": [{ \"id\": string, \"name\": string, \"reference\": string, \"description\": string }],\n  \"scenes\": [{ \"id\": string, \"name\": string, \"reference\": string, \"description\": string }],\n  \"unresolved_references\": [{ \"reference\": string, \"status\": \"not_found\" }],\n  \"final_prompt\": string,\n  \"negative_prompt\": string,\n  \"visual_style\": string,\n  \"camera\": string,\n  \"lighting\": string,\n  \"composition\": string,\n  \"aspect_ratio\": string,\n  \"image\": { \"prompt\": string, \"negative_prompt\": string, \"aspect_ratio\": string },\n  \"video\": { \"prompt\": string, \"negative_prompt\": string, \"duration\": string, \"aspect_ratio\": string, \"camera_motion\": string, \"subject_motion\": string, \"environment_motion\": string }\n}\nfinal_prompt is the primary production-ready prompt. image.prompt and video.prompt must each be self-contained prompts usable directly by an image or video model.",
+          "maxTokens": 4096
+        }
+      },
+      "id": "87fbb8e2-6fb1-402e-be53-4b80493b2f73",
+      "name": "Generate Structured Prompt",
+      "type": "@n8n/n8n-nodes-langchain.anthropic",
+      "typeVersion": 1,
+      "position": [
+        896,
+        160
+      ],
+      "credentials": {
+        "anthropicApi": {
+          "id": "7f1v8KNIG5EF4ads",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const item = $json;\nlet raw = '';\nif (item.merged_response) { raw = item.merged_response; }\nelse if (Array.isArray(item.content)) { const t = item.content.find(c => c.type === 'text'); raw = t ? t.text : ''; }\nelse if (typeof item.content === 'string') { raw = item.content; }\nraw = (raw || '').toString().trim();\nraw = raw.replace(/^\\u0060\\u0060\\u0060json/i, '').replace(/^\\u0060\\u0060\\u0060/, '').replace(/\\u0060\\u0060\\u0060$/, '').trim();\nlet parsed = {};\nlet parseError = false;\ntry {\n  parsed = JSON.parse(raw);\n} catch (e) {\n  parseError = true;\n  // Salvage: pull individual string fields from a truncated/malformed JSON body.\n  const grab = (key) => {\n    const re = new RegExp('\"' + key + '\"\\\\s*:\\\\s*\"((?:[^\"\\\\\\\\]|\\\\\\\\.)*)\"');\n    const mm = raw.match(re);\n    return mm ? mm[1].replace(/\\\\\"/g, '\"').replace(/\\\\n/g, '\\n') : '';\n  };\n  parsed = {\n    generation_type: grab('generation_type'),\n    topic: grab('topic'),\n    original_prompt: grab('original_prompt'),\n    final_prompt: grab('final_prompt'),\n    negative_prompt: grab('negative_prompt'),\n    aspect_ratio: grab('aspect_ratio'),\n  };\n}\nconst ctx = $('Build Context').item.json.context || {};\nconst finalPrompt = parsed.final_prompt || '';\nconst img = parsed.image || {};\nconst vid = parsed.video || {};\nconst imagePrompt = img.prompt || finalPrompt || ctx.original_prompt || '';\nconst videoPrompt = vid.prompt || finalPrompt || ctx.original_prompt || '';\nreturn { json: {\n  structured: parsed,\n  original_prompt: ctx.original_prompt || parsed.original_prompt || '',\n  generation_type: ctx.generation_type || parsed.generation_type || 'image',\n  final_prompt: finalPrompt,\n  image_prompt: imagePrompt,\n  video_prompt: videoPrompt,\n  negative_prompt: parsed.negative_prompt || img.negative_prompt || vid.negative_prompt || '',\n  aspect_ratio: parsed.aspect_ratio || img.aspect_ratio || vid.aspect_ratio || '16:9',\n  unresolved_references: ctx.unresolved_references || [],\n  parse_error: parseError,\n} };"
+      },
+      "id": "43a6a0e7-3d72-43d3-939a-24c22af0a40b",
+      "name": "Parse Prompt JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1232,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "gen-image",
+              "leftValue": "={{ $('Google Sheets Trigger1').item.json.Generate }}",
+              "rightValue": "Image",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "bb4629cf-6584-4dd8-b0c5-e320015f9c1d",
+      "name": "Image or Video?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1808,
+        288
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash-image",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash-image (Nano Banana)"
+        },
+        "prompt": "={{ $json.image_prompt }}",
+        "options": {
+          "binaryPropertyOutput": "data"
+        }
+      },
+      "id": "293084b2-89aa-485d-a6b3-7cc92ebcea29",
+      "name": "Generate Image",
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        2944,
+        272
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "D45AMAL1Cwa4Ul1C",
+          "name": "Google Gemini(PaLM) Api account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "={{ $(\"Set Status Working\").item.json.Prompt.toString().slice(0, 60) }} - {{ $now.toFormat(\"yyyy-LL-dd HH-mm-ss\") }}.png",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "11jVLR1Y_uqF4YQ0WFz5JZg5R8mtvF-5x",
+          "mode": "list",
+          "cachedResultName": "Naomi",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/11jVLR1Y_uqF4YQ0WFz5JZg5R8mtvF-5x"
+        },
+        "options": {}
+      },
+      "id": "5f4d95b2-1cdf-4034-9155-f97591568c40",
+      "name": "Save Image to Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3184,
+        272
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "LjrfxNSWjOdC6QpQ",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0",
+          "cachedResultName": "Images/videos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Generator",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Prompt": "={{ $(\"Set Status Working\").item.json.Prompt }}",
+            "Status": "Done",
+            "Link": "={{ $json.webViewLink }}"
+          },
+          "matchingColumns": [
+            "Prompt"
+          ],
+          "schema": [
+            {
+              "id": "Prompt",
+              "displayName": "Prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Generate",
+              "displayName": "Generate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "c08fce8e-f7d2-4b5e-a7e2-92029c8a718b",
+      "name": "Set Status Done (Image)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3392,
+        272
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mMDAlVFkw7EbTZeE",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-3.1-flash-image-preview",
+          "cachedResultName": "gemini-3.1-flash-image-preview"
+        },
+        "prompt": "={{ $(\"Parse Prompt JSON\").item.json.image_prompt }}",
+        "options": {
+          "binaryPropertyOutput": "data"
+        }
+      },
+      "id": "e951a772-f363-4ac9-8527-c0a201f509bb",
+      "name": "Generate Preview Image",
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        2272,
+        768
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "FOtj3tZXvdSRo3Xa",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "=PREVIEW - {{ $(\"Find Start Rows\").item.json.Prompt.toString().slice(0, 50) }} - {{ $now.toFormat(\"yyyy-LL-dd HH-mm-ss\") }}.png",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1zKDmc1ccuUjLjZxC0ERVuAelQL9igrPM",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "dee71369-0368-44ed-86cf-d473b7c3d795",
+      "name": "Save Preview to Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2720,
+        768
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "LjrfxNSWjOdC6QpQ",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "sendTo": "anonhossain1710@gmail.com",
+        "subject": "=Preview ready for approval: {{ $('Set Status Working').item.json.Prompt.toString().slice(0, 60) }} }}",
+        "message": "=<h3>Preview image ready for review</h3><p><b>Prompt:</b>{{ $('Set Status Working').item.json.Prompt }} </p><p><b>Video prompt:</b> {{ $(\"Parse Prompt JSON\").item.json.video_prompt }}</p><p><a href=\"{{ $json.webViewLink }}\" target=\"_blank\">Open the preview image</a></p><p>Approve to generate the video with Google Veo, or Reject to generate a new preview.</p>",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double",
+            "disapproveLabel": "Reject"
+          }
+        },
+        "options": {
+          "limitWaitTime": {
+            "values": {
+              "resumeUnit": "minutes"
+            }
+          }
+        }
+      },
+      "id": "a60afd6d-7b45-4fd2-ac6d-4e3ca72b9e2b",
+      "name": "Email Preview Approval",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        2256,
+        576
+      ],
+      "webhookId": "49f5c257-b24c-4703-b81e-76d07a7c45cb",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "NDMchyQa2gvGR8Ze",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "approved",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3b087c56-c7e9-4d74-adaf-1ea9ebc85dc0",
+      "name": "Approved?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2480,
+        704
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "modelId": {
+          "__rl": true,
+          "value": "models/veo-3.1-generate-preview",
+          "mode": "list",
+          "cachedResultName": "models/veo-3.1-generate-preview"
+        },
+        "prompt": "={{ $(\"Parse Prompt JSON\").item.json.video_prompt }}",
+        "options": {
+          "sampleCount": 1,
+          "durationSeconds": 8,
+          "aspectRatio": "16:9",
+          "personGeneration": "allow_all",
+          "binaryPropertyOutput": "data"
+        }
+      },
+      "id": "be860db2-67b9-4eb7-a0ce-eb01d89ea3e2",
+      "name": "Generate Video (Veo)",
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        2960,
+        560
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "FOtj3tZXvdSRo3Xa",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "={{ $now.toFormat(\"yyyy-LL-dd HH-mm-ss\") }}.mp4",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1zKDmc1ccuUjLjZxC0ERVuAelQL9igrPM",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "74409752-654a-488c-b6ac-aa1dcefa92d3",
+      "name": "Save Video to Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3184,
+        560
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "LjrfxNSWjOdC6QpQ",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0",
+          "cachedResultName": "Images/videos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Generator",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "Prompt"
+          ],
+          "value": {
+            "Prompt": "={{ $(\"Find Start Rows\").item.json.Prompt }}",
+            "Status": "Done",
+            "Link": "={{ $json.webViewLink }}"
+          },
+          "schema": [
+            {
+              "id": "Prompt",
+              "displayName": "Prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Generate",
+              "displayName": "Generate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9affa1ca-3555-4e1a-89c7-804ede76b38d",
+      "name": "Set Status Done (Video)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3408,
+        560
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mMDAlVFkw7EbTZeE",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "status_check",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "start",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "singleValue": false
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1104,
+        464
+      ],
+      "id": "61042914-cc7f-45d7-ba52-d8ef916f1dc1",
+      "name": "If Status is 'start'"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0",
+          "mode": "list",
+          "cachedResultName": "Images/videos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Generator",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_sVJxIuXV8yDGGwQT6deSGnBBc5H59yZvicppEM4JY0/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        864,
+        464
+      ],
+      "id": "aeacfa69-1318-496c-ae50-fb013c1ccb5d",
+      "name": "Google Sheets Trigger1",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "uxVhbSQDGcWc1WZP",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Set Status Working": {
+      "main": [
+        [
+          {
+            "node": "Prompt Empty?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prompt Empty?": {
+      "main": [
+        [
+          {
+            "node": "Set Status Error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Detect @References",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Detect @References": {
+      "main": [
+        [
+          {
+            "node": "Get Character Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Character Data": {
+      "main": [
+        [
+          {
+            "node": "Get Scene Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Scene Data": {
+      "main": [
+        [
+          {
+            "node": "Build Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Context": {
+      "main": [
+        [
+          {
+            "node": "Generate Structured Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Structured Prompt": {
+      "main": [
+        [
+          {
+            "node": "Parse Prompt JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Prompt JSON": {
+      "main": [
+        [
+          {
+            "node": "Image or Video?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image or Video?": {
+      "main": [
+        [
+          {
+            "node": "Generate Image",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate Preview Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image": {
+      "main": [
+        [
+          {
+            "node": "Save Image to Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Image to Drive": {
+      "main": [
+        [
+          {
+            "node": "Set Status Done (Image)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Preview Image": {
+      "main": [
+        [
+          {
+            "node": "Save Preview to Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Preview to Drive": {
+      "main": [
+        [
+          {
+            "node": "Email Preview Approval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Preview Approval": {
+      "main": [
+        [
+          {
+            "node": "Approved?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Approved?": {
+      "main": [
+        [
+          {
+            "node": "Generate Video (Veo)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate Preview Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Video (Veo)": {
+      "main": [
+        [
+          {
+            "node": "Save Video to Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Video to Drive": {
+      "main": [
+        [
+          {
+            "node": "Set Status Done (Video)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets Trigger1": {
+      "main": [
+        [
+          {
+            "node": "If Status is 'start'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Status is 'start'": {
+      "main": [
+        [
+          {
+            "node": "Set Status Working",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Status Done (Image)": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "72f14875-4a3b-431a-a9c6-0d1c218423d5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2fd8298d17f2c538156972330c854feb5069852b66b79f6da1905a9a10c4445b"
+  },
+  "nodeGroups": [
+    {
+      "id": "1db8552c-d89f-4f40-aff8-a69823dfd2ec",
+      "name": "Context Preparation",
+      "nodeIds": [
+        "a0560e11-2818-4954-bbb8-dbd65411158f",
+        "e000ddbb-9bbc-42de-bcc1-0f5ea9196ab7",
+        "931f70ca-ce27-413b-a941-dfe84d99b4ce",
+        "cd893e23-7907-43dc-8d50-5e70cdb0c281",
+        "87fbb8e2-6fb1-402e-be53-4b80493b2f73",
+        "43a6a0e7-3d72-43d3-939a-24c22af0a40b"
+      ],
+      "description": "Detects @character/@scene references, looks them up in the Character and Scene sheets, applies the Topic, builds a context object, and asks the L"
+    },
+    {
+      "id": "128b9387-96cb-41cc-a1f8-31d1b9eb94fc",
+      "name": "Preview Approval",
+      "nodeIds": [
+        "e951a772-f363-4ac9-8527-c0a201f509bb",
+        "dee71369-0368-44ed-86cf-d473b7c3d795",
+        "a60afd6d-7b45-4fd2-ac6d-4e3ca72b9e2b",
+        "3b087c56-c7e9-4d74-adaf-1ea9ebc85dc0"
+      ],
+      "description": "Generates a preview image, emails it for Approve/Reject; reject regenerates a new preview, approve continues to video."
+    }
+  ],
+  "id": "6I3NfTGoxFmimZiA",
+  "tags": []
+}
